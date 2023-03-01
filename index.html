@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Open Camera</title>
+</head>
+<body>
+  <button onclick="startCamera()">Open Camera</button>
+  <script>
+    function startCamera() {
+      navigator.mediaDevices.getUserMedia({ video: true })
+        .then(function(stream) {
+          var video = document.createElement('video');
+          video.srcObject = stream;
+          video.play();
+          document.body.appendChild(video);
+        })
+        .catch(function(err) {
+          console.log(err.name + ": " + err.message);
+        });
+    }
+  </script>
+</body>
+</html>
